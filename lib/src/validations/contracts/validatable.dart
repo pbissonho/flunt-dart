@@ -1,3 +1,7 @@
 abstract class IValidatable {
-  void Validate();
+  void validate();
+}
+
+abstract class IValidate<T> {
+  bool validate(T value);
 }

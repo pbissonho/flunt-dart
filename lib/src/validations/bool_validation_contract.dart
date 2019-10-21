@@ -1,17 +1,14 @@
-import 'package:flunt_dart/src/notifications/notificable.dart';
+import 'package:flunt_dart/src/validations/contracts/validatable.dart';
+import 'package:flunt_dart/src/validators/bool_validator.dart';
 
-import 'contract.dart';
-import 'contracts/contract.dart';
+mixin BoolValidation<T> implements IValidatable {
+  void _addValidator(IValidate validate, message);
 
-mixin BooleanValidationContract implements IContract {
-  Contract isTrue(bool val, String property, String message) =>
-      isFalse(!val, property, message);
+  void isTrue(String message) {
+    _addValidator(TrueValidator(), message);
+  }
 
-  Contract isFalse(bool val, String property, String message) {
-    if (val) {
-      addNotification(AddFrom.params(property, message));
-      ;
-    }
-    return contract;
+  void isFalse(String message) {
+    _addValidator(FalseValidator(), message);
   }
 }

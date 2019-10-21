@@ -7,10 +7,6 @@ abstract class AddFrom {
     return _FromList(_notifications);
   }
 
-  factory AddFrom.notifiable(Notifiable notifiable) {
-    return _FromNotifiable(notifiable);
-  }
-
   factory AddFrom.params(
     String property,
     final String message,
@@ -55,17 +51,6 @@ class _FromList extends AddFrom {
   }
 }
 
-class _FromNotifiable extends AddFrom {
-  final Notifiable _item;
-
-  _FromNotifiable(this._item);
-
-  @override
-  void add(List<Notification> notifications) {
-    notifications.addAll(_item.notifications);
-  }
-}
-
 class _FromNotifiables extends AddFrom {
   final List<Notifiable> _items;
 
@@ -92,7 +77,7 @@ class Notifiable {
     addNotification.add(_notifications);
   }
 
-  void addFromNotifiable(Notifiable notifiable) {
+  void addNotifiable(Notifiable notifiable) {
     notifications.addAll(notifiable.notifications);
   }
 
