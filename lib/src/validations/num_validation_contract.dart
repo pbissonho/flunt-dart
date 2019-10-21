@@ -2,7 +2,7 @@ import 'package:flunt_dart/src/validators/num_validator.dart';
 
 import 'contracts/contract.dart';
 
-mixin NumValidation<T> implements IRule {
+mixin NumValidation<T> implements IContract {
   void isGreaterThan(int compare, String message) {
     addValidator(GreaterThanValidator(compare), message);
   }

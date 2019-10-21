@@ -4,9 +4,6 @@ import 'package:meta/meta.dart';
 
 abstract class IContract implements Notifiable {
   requires();
-}
-
-abstract class IRule {
   @protected
   void addValidator(IValidate validate, message);
 }

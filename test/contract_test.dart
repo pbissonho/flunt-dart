@@ -1,14 +1,33 @@
-import 'package:flunt_dart/src/validations/contract.dart';
+import 'package:flunt_dart/flunt_dart.dart';
 import 'package:test/test.dart';
 
 class Car {
   String name;
 }
 
-class CarContract extends Contract<Car> {
-  CarContract(Car car) : super(car) {
-    add(PropertyContract(car.name, "Name")
+// Ony a examplo
+class CpfValidator implements IValidate<String> {
+  @override
+  bool validate(value) {
+    return true;
+  }
+}
+
+abstract class BrContractValidation implements IContract {
+  isCPF(String message) {
+    addValidator(CpfValidator(), message);
+  }
+}
+
+class BrContract<T> extends Contract<T> with BrContractValidation {
+  BrContract(property, String name) : super(property, name);
+}
+
+class CarContract extends Contract {
+  CarContract(Car car) : super(car, "Car") {
+    add(BrContract(car.name, "Name")
       ..isNotEmpty("message")
+      ..isCPF("message")
       ..exactLen(3, "message"));
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flunt_dart/src/validations/contracts/contract.dart';
 import 'package:flunt_dart/src/validators/string_validator.dart';
 
-mixin StringValidation<T> implements IRule {
+mixin StringValidation<T> implements IContract {
   void exactLen(int length, String message) {
     addValidator(HasExactLengthValidator(length), message);
   }

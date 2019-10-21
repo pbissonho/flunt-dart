@@ -1,7 +1,7 @@
 import 'package:flunt_dart/flunt_dart.dart';
 import 'package:flunt_dart/src/validators/object_validator.dart';
 
-mixin ObjectValidation<T> implements IRule {
+mixin ObjectValidation<T> implements IContract {
   void isNull(String message) {
     addValidator(NullValidator(), message);
   }

@@ -7,13 +7,19 @@ import 'contracts/validatable.dart';
 import 'string_validation_contract.dart';
 import 'package:meta/meta.dart';
 
-class Contract<T> extends Notifiable implements IContract {
-  Contract(this.objeto) {
-    rules = Map<String, PropertyContract>();
+class Contract<T> extends Notifiable
+    with BoolValidation, StringValidation, ObjectValidation, PatternValidation
+    implements IContract {
+  Contract(T property, String name) {
+    _propertyName = name;
+    _property = property;
   }
 
-  T objeto;
-  Map<String, PropertyContract> rules;
+  T _property;
+  String _propertyName;
+
+  String get propertyName => _propertyName;
+  T get property => _property;
 
   @override
   void requires() {
@@ -30,33 +36,8 @@ class Contract<T> extends Notifiable implements IContract {
     return this;
   }
 
-  void add(PropertyContract property) {
-    var rule = property;
-
-    rules[rule.propertyName] = rule;
-    addNotifiable(rule);
-  }
-}
-
-class PropertyContract<T> extends Notifiable
-    with BoolValidation, StringValidation, ObjectValidation, PatternValidation {
-  T _property;
-  String _propertyName;
-
-  String get propertyName => _propertyName;
-  T get property => _property;
-
-  PropertyContract(T property, String name) {
-    _propertyName = propertyName;
-    _property = property;
-  }
-
-  void forValue(T value) {
-    _property = value;
-  }
-
-  void withName(String name) {
-    _propertyName = name;
+  void add(Notifiable contract) {
+    addNotifiable(contract);
   }
 
   void withValidate(IValidate<T> validator, String message) {
