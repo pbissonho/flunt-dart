@@ -1,11 +1,30 @@
-import 'package:dflunt/src/notifications/notification.dart';
-import 'contracts/add_notification.dart';
+import 'package:flunt_dart/src/notifications/notification.dart';
 import 'contracts/add_notifications.dart';
 
-class FromNotification implements AddNotification {
+abstract class AddFrom {
+  AddFrom();
+  factory AddFrom.list(List<Notification> _notifications) {
+    return _FromList(_notifications);
+  }
+
+  factory AddFrom.notifiable(Notifiable notifiable) {
+    return _FromNotifiable(notifiable);
+  }
+
+  factory AddFrom.params(
+    String property,
+    final String message,
+  ) {
+    return _FromString(property, message);
+  }
+
+  void add(List<Notification> notifications);
+}
+
+class _FromNotification extends AddFrom {
   final Notification notification;
 
-  FromNotification(this.notification);
+  _FromNotification(this.notification);
 
   @override
   void add(List<Notification> notifications) {
@@ -13,11 +32,11 @@ class FromNotification implements AddNotification {
   }
 }
 
-class FromString implements AddNotification {
+class _FromString extends AddFrom {
   final String property;
   final String message;
 
-  FromString(this.property, this.message);
+  _FromString(this.property, this.message);
 
   @override
   void add(List<Notification> notifications) {
@@ -25,10 +44,10 @@ class FromString implements AddNotification {
   }
 }
 
-class FromList implements AddNotifications {
+class _FromList extends AddFrom {
   final List<Notification> _notifications;
 
-  FromList(this._notifications);
+  _FromList(this._notifications);
 
   @override
   void add(List<Notification> notifications) {
@@ -36,10 +55,10 @@ class FromList implements AddNotifications {
   }
 }
 
-class FromNotifiable implements AddNotifications {
+class _FromNotifiable extends AddFrom {
   final Notifiable _item;
 
-  FromNotifiable(this._item);
+  _FromNotifiable(this._item);
 
   @override
   void add(List<Notification> notifications) {
@@ -47,10 +66,10 @@ class FromNotifiable implements AddNotifications {
   }
 }
 
-class FromNotifiables implements AddNotifications {
+class _FromNotifiables extends AddFrom {
   final List<Notifiable> _items;
 
-  FromNotifiables(this._items);
+  _FromNotifiables(this._items);
 
   @override
   void add(List<Notification> notifications) {
@@ -69,8 +88,12 @@ class Notifiable {
 
   List<Notification> get notifications => _notifications;
 
-  void addNotification(AddNotification addNotification) {
+  void addNotification(AddFrom addNotification) {
     addNotification.add(_notifications);
+  }
+
+  void addFromNotifiable(Notifiable notifiable) {
+    notifications.addAll(notifiable.notifications);
   }
 
   void addNotifications(AddNotifications addNotifications) {

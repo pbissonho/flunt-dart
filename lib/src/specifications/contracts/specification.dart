@@ -1,5 +1,5 @@
-abstract class ISpecification {
-  Contract get contract;
-}
+import 'package:flunt_dart/src/validations/contracts/contract.dart';
 
-class Contract {}
+abstract class ISpecification {
+  IContract get contract;
+}
