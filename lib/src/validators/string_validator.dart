@@ -76,7 +76,7 @@ class HasMaxLenValidator implements IValidate<String> {
 
   @override
   bool validate(String value) {
-    return (value.length < max);
+    return !(value.length > max);
   }
 }
 

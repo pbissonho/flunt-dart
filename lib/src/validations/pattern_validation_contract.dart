@@ -1,22 +1,20 @@
-import 'package:flunt_dart/src/validations/contracts/validatable.dart';
+import 'package:flunt_dart/src/validations/contracts/contract.dart';
 import 'package:flunt_dart/src/validators/pattern_validator.dart';
 
-mixin PatternValidation<T> implements IValidatable {
-  void _addValidator(IValidate validate, message);
-
+mixin PatternValidation<T> implements IRule {
   void matchs(String pattern, String message) {
-    _addValidator(MatchsValidator(pattern), message);
+    addValidator(MatchsValidator(pattern), message);
   }
 
   void isUrl(String message) {
-    _addValidator(UrlValidator(), message);
+    addValidator(UrlValidator(), message);
   }
 
   void isEmail(String message) {
-    _addValidator(EmailValidator(), message);
+    addValidator(EmailValidator(), message);
   }
 
   void isDigit(String message) {
-    _addValidator(DigitValidator(), message);
+    addValidator(DigitValidator(), message);
   }
 }

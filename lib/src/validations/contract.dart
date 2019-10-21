@@ -5,14 +5,15 @@ import 'bool_validation_contract.dart';
 import 'contracts/contract.dart';
 import 'contracts/validatable.dart';
 import 'string_validation_contract.dart';
+import 'package:meta/meta.dart';
 
 class Contract<T> extends Notifiable implements IContract {
   Contract(this.objeto) {
-    rules = Map<String, RuleProperty>();
+    rules = Map<String, PropertyContract>();
   }
 
   T objeto;
-  Map<String, RuleProperty> rules;
+  Map<String, PropertyContract> rules;
 
   @override
   void requires() {
@@ -29,26 +30,23 @@ class Contract<T> extends Notifiable implements IContract {
     return this;
   }
 
-  void contractFor(RuleProperty create(RuleProperty rule)) {
-    var rule = create(RuleProperty(""));
-    rules[rule.propertyName] = rule;
+  void add(PropertyContract property) {
+    var rule = property;
 
-    addNotifiable(rule..validate());
+    rules[rule.propertyName] = rule;
+    addNotifiable(rule);
   }
 }
 
-class RuleProperty<T> extends Notifiable
-    with BoolValidation, StringValidation, ObjectValidation, PatternValidation
-    implements IValidatable {
-  Map<String, IValidate> map;
+class PropertyContract<T> extends Notifiable
+    with BoolValidation, StringValidation, ObjectValidation, PatternValidation {
   T _property;
   String _propertyName;
 
   String get propertyName => _propertyName;
   T get property => _property;
 
-  RuleProperty(T property, {String propertyName}) {
-    map = Map<String, IValidate>();
+  PropertyContract(T property, String name) {
     _propertyName = propertyName;
     _property = property;
   }
@@ -61,20 +59,15 @@ class RuleProperty<T> extends Notifiable
     _propertyName = name;
   }
 
-  void _addValidator(IValidate validate, message) {
-    map[message] = validate;
-  }
-
   void withValidate(IValidate<T> validator, String message) {
-    _addValidator(validator, message);
+    addValidator(validator, message);
   }
 
   @override
-  void validate() {
-    map.forEach((message, validator) {
-      if (!validator.validate(property)) {
-        addNotification(AddFrom.params(propertyName, message));
-      } else {}
-    });
+  @protected
+  void addValidator(IValidate validate, message) {
+    if (!validate.validate(property)) {
+      addNotification(AddFrom.params(propertyName, message));
+    }
   }
 }
