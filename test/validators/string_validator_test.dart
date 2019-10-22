@@ -1,14 +1,20 @@
 import 'package:flunt_dart/src/validators/string_validator.dart';
 import 'package:test/test.dart';
 
+void contains(String value) {
+  String prope;
+  var result = ContainsValidator(value);
+  result.validate(prope);
+}
+
 void main() {
   group("StringValidator", () {
     test("when is true", () {
-      var result = ContainsValidator("Juca da Silva").validate("Juca");
+      var result = ContainsValidator("is").validate("This is a string");
       expect(true, result);
     });
     test("when is false", () {
-      var result = ContainsValidator("Silva").validate("Juca");
+      var result = ContainsValidator("not").validate("This is a string");
       expect(false, result);
     });
 

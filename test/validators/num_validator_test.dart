@@ -34,14 +34,14 @@ void main() {
     group("(When Compare int with int)", () {
       test('true', () {
         var validator = GreaterThanValidator(20.00);
-        var result = validator.validate(20.00);
+        var result = validator.validate(21.00);
         expect(true, result);
       });
 
       test('false', () {
         var validator = GreaterThanValidator(80.0);
         var result = validator.validate(90);
-        expect(false, result);
+        expect(true, result);
       });
     });
 

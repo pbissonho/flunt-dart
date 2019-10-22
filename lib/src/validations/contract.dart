@@ -17,9 +17,7 @@ class Contract<T> extends Notifiable
         PatternValidation,
         NumValidation
     implements IContract {
-  Contract(this.property, this.name)
-      : assert(property != null),
-        assert(name != null);
+  Contract(this.property, this.name) : assert(name != null);
 
   final T property;
   final String name;

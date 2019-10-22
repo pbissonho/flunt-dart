@@ -94,11 +94,11 @@ class HasExactLengthValidator implements IValidate<String> {
 }
 
 class ContainsValidator implements IValidate<String> {
-  final String text;
-  ContainsValidator(this.text);
+  final String other;
+  ContainsValidator(this.other);
 
   @override
   bool validate(String value) {
-    return (value.contains(text));
+    return (value.contains(other));
   }
 }

@@ -10,6 +10,10 @@ mixin ObjectValidation<T> implements IContract {
     addValidator(NotNullValidator(), message);
   }
 
+  void equasA(Object compare, String message) {
+    addValidator(EqualsValidator(compare), message);
+  }
+
   void when(bool when(T value), String message) {
     addValidator(WhenValidator(when), message);
   }
