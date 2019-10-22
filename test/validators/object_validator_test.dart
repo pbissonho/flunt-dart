@@ -2,6 +2,14 @@ import 'package:flunt_dart/src/validators/object_validator.dart';
 import 'package:test/test.dart';
 
 void main() {
+  test(' WhenValidator ', () {
+    var validator = WhenValidator((value) => value == 2);
+    var right = validator.validate(2);
+    var wrong = validator.validate(3);
+    expect(true, right);
+    expect(false, wrong);
+  });
+
   group(("EqualsValidator"), () {
     test(' when value not is equal ', () {
       String stringValue = "String";

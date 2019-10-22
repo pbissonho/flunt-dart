@@ -1,59 +1,53 @@
 import 'package:flunt_dart/flunt_dart.dart';
 import 'package:test/test.dart';
 
-class Car {
-  final String name;
-  final int year;
-  Car(this.name, this.year);
-}
-
-// Ony a example
-class CpfValidator implements IValidate<String> {
+class InvalidValidator implements IValidate<String> {
   @override
   bool validate(value) {
-    return true;
+    throw Exception("InvalidValidator");
   }
 }
 
-mixin BrContractValidation implements IContract {
-  isCPF(String message) {
-    addValidator(CpfValidator(), message);
-  }
-}
-
-class BrContract<T> extends Contract<T> with BrContractValidation {
-  BrContract(property, String name) : super(property, name);
-}
-
-class CarContract extends Contract {
-  CarContract(Car car) : super(car, "Car") {
-    addNotifiable(
-        BrContract(car.name, "Name")..isNotEmpty("Não deve ser vazio"));
-
-    addNotifiable(Contract(car.year, "Year")
-      ..isGreaterThan(2010, "Carro deve ser novo")
-      ..isNotNull("Não deve ser null"));
+class FakeValidator implements IValidate<String> {
+  @override
+  bool validate(String value) {
+    return false;
   }
 }
 
 void main() {
   group("Contract", () {
-    test("when contract is valid", () {
-      var car = Car("BMW-Z", 2015);
+    test("join", () {
+      var contract1 = Contract("String", "Some String");
+      var contract2 = Contract("", "Some String");
 
-      var carContract = CarContract(car);
+      contract1.isEmail("Not is a valid email");
+      contract2.isNotEmpty("String is empty");
 
-      expect(true, carContract.valid);
+      var contract3 = contract1.join([contract2]);
+
+      expect(true, contract3.invalid);
+      expect(false, contract3.valid);
+      expect(2, contract3.notifications.length);
     });
-    test("when contract is invalid", () {
-      bool isCpfValid = CpfValidator().validate("18964039726");
 
-      expect(true, isCpfValid);
-      var car = Car("BMW-XXXXXXXXXX", 2008);
+    test("withValidate", () {
+      var contract = Contract("String", "Some String")
+        ..withValidate(FakeValidator(), "Fake");
 
-      var carContract = CarContract(car);
-
-      expect(false, carContract.valid);
+      expect(true, contract.invalid);
+      expect(false, contract.valid);
+      expect(1, contract.notifications.length);
     });
+
+    test("when validator trow a exception", () {
+      try {
+        var contract = Contract("String", "Some String")
+          ..withValidate(InvalidValidator(), "Fake");
+      } catch (error) {
+        expect(error, isA<Exception>());
+      }
+    });
+    test("when contract is invalid", () {});
   });
 }

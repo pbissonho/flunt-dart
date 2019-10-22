@@ -1,5 +1,4 @@
 import 'package:flunt_dart/src/validations/contracts/validatable.dart';
-import 'package:flunt_dart/src/validators/object_validator.dart';
 
 class SpaceValidator implements IValidate<String> {
   SpaceValidator();
@@ -39,29 +38,6 @@ class NotEmptyValidator implements IValidate<String> {
     return (value.isNotEmpty);
   }
 }
-
-class NotNullOrEmptyValidator implements IValidate<String> {
-  NotNullOrEmptyValidator();
-
-  @override
-  bool validate(String value) {
-    var isNotNull = NotEmptyValidator().validate(value);
-    return (isNotNull || value.isNotEmpty);
-  }
-}
-
-class NullOrEmptyValidator implements IValidate<String> {
-  NullOrEmptyValidator();
-
-  @override
-  bool validate(String value) {
-    var isNotNull = NullValidator().validate(value);
-    return (isNotNull || value.isNotEmpty);
-  }
-}
-
-// 5
-// 12345
 
 class HasMinLenValidator implements IValidate<String> {
   final int min;

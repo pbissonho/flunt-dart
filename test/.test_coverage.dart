@@ -5,7 +5,10 @@ import 'contract_test.dart' as contract_test;
 import 'notifications/notificable_test.dart' as notifications_notificable_test;
 import 'notifications/notification_test.dart' as notifications_notification_test;
 import 'validations/bool_validation_contract_test.dart' as validations_bool_validation_contract_test;
+import 'validations/num_validation_contract_test.dart' as validations_num_validation_contract_test;
 import 'validations/object_validation_contract_test.dart' as validations_object_validation_contract_test;
+import 'validations/pattern_validation_contract_test.dart' as validations_pattern_validation_contract_test;
+import 'validations/string_validation_contract_test.dart' as validations_string_validation_contract_test;
 import 'validators/bool_validator_test.dart' as validators_bool_validator_test;
 import 'validators/num_validator_test.dart' as validators_num_validator_test;
 import 'validators/object_validator_test.dart' as validators_object_validator_test;
@@ -14,7 +17,10 @@ import 'validators/string_validator_test.dart' as validators_string_validator_te
 
 void main() {
   validations_bool_validation_contract_test.main();
+  validations_string_validation_contract_test.main();
+  validations_num_validation_contract_test.main();
   validations_object_validation_contract_test.main();
+  validations_pattern_validation_contract_test.main();
   validators_bool_validator_test.main();
   validators_num_validator_test.main();
   validators_string_validator_test.main();

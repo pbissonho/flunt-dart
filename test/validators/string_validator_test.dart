@@ -1,13 +1,15 @@
 import 'package:flunt_dart/src/validators/string_validator.dart';
 import 'package:test/test.dart';
 
-void contains(String value) {
-  String prope;
-  var result = ContainsValidator(value);
-  result.validate(prope);
-}
-
 void main() {
+  test("HasExactLengthValidator", () {
+    var nasExactLengthValidator = HasExactLengthValidator(5);
+    var valid = nasExactLengthValidator.validate("12345");
+    var notValid = nasExactLengthValidator.validate("123");
+    expect(true, valid);
+    expect(false, notValid);
+  });
+
   group("StringValidator", () {
     test("when is true", () {
       var result = ContainsValidator("is").validate("This is a string");

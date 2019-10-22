@@ -2,7 +2,7 @@ import 'package:flunt_dart/src/validations/contracts/contract.dart';
 import 'package:flunt_dart/src/validators/string_validator.dart';
 
 mixin StringValidation<T> implements IContract {
-  void exactLen(int length, String message) {
+  void hasLen(int length, String message) {
     addValidator(HasExactLengthValidator(length), message);
   }
 
@@ -14,7 +14,7 @@ mixin StringValidation<T> implements IContract {
     addValidator(HasMinLenValidator(min), message);
   }
 
-  void isSpace(String message) {
+  void isWhiteSpace(String message) {
     addValidator(SpaceValidator(), message);
   }
 

@@ -21,7 +21,8 @@ class NullValidator implements IValidate<Object> {
 class NotNullValidator implements IValidate<Object> {
   @override
   bool validate(Object value) {
-    return (value != null);
+    if (value != null) return true;
+    return false;
   }
 }
 
