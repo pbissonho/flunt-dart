@@ -1,5 +1,5 @@
 name: flunt_dart
-description: Flunt library for Dart developers.
+description: Library that provides a fluent way to use Notification Pattern.
 version: 0.0.1
 homepage: https://github.com/PedroBissonho/flunt-dart
 author: Pedro Bissonho <pedro.bissonho@gmail.com>
@@ -8,8 +8,7 @@ environment:
   sdk: '>=2.5.0 <3.0.0'
 
 dependencies:
-  path: ^1.6.0
-
+  
 dev_dependencies:
   pedantic: ^1.8.0
   test: ^1.6.0
