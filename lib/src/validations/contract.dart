@@ -1,4 +1,6 @@
 import 'package:flunt_dart/src/notifications/notificable.dart';
+import 'package:flunt_dart/src/notifications/notification.dart';
+import 'package:flunt_dart/src/validations/num_validation_contract.dart';
 import 'package:flunt_dart/src/validations/object_validation_contract.dart';
 import 'package:flunt_dart/src/validations/pattern_validation_contract.dart';
 import 'bool_validation_contract.dart';
@@ -8,23 +10,22 @@ import 'string_validation_contract.dart';
 import 'package:meta/meta.dart';
 
 class Contract<T> extends Notifiable
-    with BoolValidation, StringValidation, ObjectValidation, PatternValidation
+    with
+        BoolValidation,
+        StringValidation,
+        ObjectValidation,
+        PatternValidation,
+        NumValidation
     implements IContract {
-  Contract(T property, String name) {
-    _propertyName = name;
-    _property = property;
-  }
+  Contract(this.property, this.name)
+      : assert(property != null),
+        assert(name != null);
 
-  T _property;
-  String _propertyName;
-
-  String get propertyName => _propertyName;
-  T get property => _property;
+  final T property;
+  final String name;
 
   @override
-  void requires() {
-    if (this == null) {}
-  }
+  void requires() {}
 
   Contract join(List<Notifiable> items) {
     if (items != null) {
@@ -36,10 +37,6 @@ class Contract<T> extends Notifiable
     return this;
   }
 
-  void add(Notifiable contract) {
-    addNotifiable(contract);
-  }
-
   void withValidate(IValidate<T> validator, String message) {
     addValidator(validator, message);
   }
@@ -48,7 +45,7 @@ class Contract<T> extends Notifiable
   @protected
   void addValidator(IValidate validate, message) {
     if (!validate.validate(property)) {
-      addNotification(AddFrom.params(propertyName, message));
+      addNotification(Notification(name, message));
     }
   }
 }

@@ -2,10 +2,12 @@ import 'package:flunt_dart/flunt_dart.dart';
 import 'package:test/test.dart';
 
 class Car {
-  String name;
+  final String name;
+  final int year;
+  Car(this.name, this.year);
 }
 
-// Ony a examplo
+// Ony a example
 class CpfValidator implements IValidate<String> {
   @override
   bool validate(value) {
@@ -13,7 +15,7 @@ class CpfValidator implements IValidate<String> {
   }
 }
 
-abstract class BrContractValidation implements IContract {
+mixin BrContractValidation implements IContract {
   isCPF(String message) {
     addValidator(CpfValidator(), message);
   }
@@ -25,25 +27,30 @@ class BrContract<T> extends Contract<T> with BrContractValidation {
 
 class CarContract extends Contract {
   CarContract(Car car) : super(car, "Car") {
-    add(BrContract(car.name, "Name")
-      ..isNotEmpty("message")
-      ..isCPF("message")
-      ..exactLen(3, "message"));
+    addNotifiable(
+        BrContract(car.name, "Name")..isNotEmpty("Não deve ser vazio"));
+
+    addNotifiable(Contract(car.year, "Year")
+      ..isGreaterThan(2010, "Carro deve ser novo")
+      ..isNotNull("Não deve ser null"));
   }
 }
 
 void main() {
   group("Contract", () {
     test("when contract is valid", () {
-      var car = Car();
-      car.name = "JJJ";
+      var car = Car("BMW-Z", 2015);
+
       var carContract = CarContract(car);
 
       expect(true, carContract.valid);
     });
     test("when contract is invalid", () {
-      var car = Car();
-      car.name = "JJddddddddddddddddJ";
+      bool isCpfValid = CpfValidator().validate("18964039726");
+
+      expect(true, isCpfValid);
+      var car = Car("BMW-XXXXXXXXXX", 2008);
+
       var carContract = CarContract(car);
 
       expect(false, carContract.valid);

@@ -60,13 +60,16 @@ class NullOrEmptyValidator implements IValidate<String> {
   }
 }
 
+// 5
+// 12345
+
 class HasMinLenValidator implements IValidate<String> {
   final int min;
   HasMinLenValidator(this.min);
 
   @override
   bool validate(String value) {
-    return (value.length > min);
+    return (value.length >= min);
   }
 }
 
