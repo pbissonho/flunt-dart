@@ -7,11 +7,15 @@ mixin NumValidation<T> implements IContract {
     addValidator(GreaterThanValidator(compare), message);
   }
 
-  void isLowerThanThan(int compare, String message) {
+  void isLowerThan(int compare, String message) {
     addValidator(LowerThanValidator(compare), message);
   }
 
   void between(num from, num to, String message) {
     addValidator(BetweenValidator(from, to), message);
+  }
+
+  void notBetween(num from, num to, String message) {
+    addValidator(NotBetweenValidator(from, to), message);
   }
 }

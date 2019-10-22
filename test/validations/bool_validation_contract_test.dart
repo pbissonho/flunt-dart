@@ -12,7 +12,7 @@ void main() {
       expect(contract.notifications.length, 0);
     });
 
-    test("when not contract is valid", () {
+    test("when  contract not is valid", () {
       var contract = Contract(false, "Value");
       contract..isTrue("Value not is true");
       expect(contract.property, isA<bool>());

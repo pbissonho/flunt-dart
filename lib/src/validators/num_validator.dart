@@ -1,16 +1,5 @@
 import 'package:flunt_dart/src/validations/contracts/validatable.dart';
 
-class NumEqualsValidator implements IValidate<num> {
-  final num comparer;
-
-  NumEqualsValidator(this.comparer);
-
-  @override
-  bool validate(num value) {
-    return (value == comparer);
-  }
-}
-
 class GreaterThanValidator implements IValidate<num> {
   final num comparer;
 
@@ -45,13 +34,14 @@ class BetweenValidator implements IValidate<num> {
   }
 }
 
-class NotEqualsBetweenValidator implements IValidate<num> {
-  final num comparer;
+class NotBetweenValidator implements IValidate<num> {
+  final num from;
+  final num to;
 
-  NotEqualsBetweenValidator(this.comparer);
+  NotBetweenValidator(this.from, this.to);
 
   @override
   bool validate(num value) {
-    return (value != comparer);
+    return !BetweenValidator(from, to).validate(value);
   }
 }
