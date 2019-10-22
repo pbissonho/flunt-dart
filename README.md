@@ -8,16 +8,9 @@ Library that provides a fluent way to use Notification Pattern. It is based on [
 
 ## Usage
 
-### For single attribute.
+### Create a contract
 
-``` dart
-var contract = Contract(property, "PropertyName")
-      ..isNotEmpty("Message when property is empty.")
-      ..hasMaxLen(20, "Message when property length is more than 20.")
-      ..hasMinLen(3, "Message when property length is less than 3.");
-```
-
-### For a class.
+Create a contract for a attribute ou a class.
 
 ``` dart
 class Customer {
@@ -45,12 +38,15 @@ class CustomerContract extends Contract<Customer> {
   }
 }
 
+```
+### Use o contract
 
+  
+``` dart
   var customer = Customer("Pedro", "Bissonho");
   var customerContract = CustomerContract(customer);
 
   if (customerContract.valid) {
     // The customer is valid and can be used.
   }
-
 ```
