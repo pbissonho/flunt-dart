@@ -1,6 +1,6 @@
 name: flunt_dart
 description: Library that provides a fluent way to use Notification Pattern.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/PedroBissonho/flunt-dart
 author: Pedro Bissonho <pedro.bissonho@gmail.com>
 
