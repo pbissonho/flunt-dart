@@ -39,8 +39,7 @@ class CustomerContract extends Contract<Customer> {
 }
 
 ```
-### Use o contract
-
+### Use the contract
   
 ``` dart
   var customer = Customer("Pedro", "Bissonho");
