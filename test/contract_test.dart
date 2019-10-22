@@ -30,7 +30,6 @@ void main() {
       expect(false, contract3.valid);
       expect(2, contract3.notifications.length);
     });
-
     test("withValidate", () {
       var contract = Contract("String", "Some String")
         ..withValidate(FakeValidator(), "Fake");
@@ -42,7 +41,7 @@ void main() {
 
     test("when validator trow a exception", () {
       try {
-        var contract = Contract("String", "Some String")
+        Contract("String", "Some String")
           ..withValidate(InvalidValidator(), "Fake");
       } catch (error) {
         expect(error, isA<Exception>());
