@@ -42,8 +42,17 @@ class Contract<T> extends Notifiable
   @override
   @protected
   void addValidator(IValidate validate, message) {
-    if (!validate.validate(property)) {
-      addNotification(Notification(name, message));
+    try {
+      if (!validate.validate(property)) {
+        addNotification(Notification(name, message));
+      }
+    } catch (error) {
+      throw Exception(
+          """Error when ${validate.runtimeType.toString()} validate a property. \n
+          Property name: ${name} \n
+          Property: ${property} \n
+          Error: ${error.toString()}
+          """);
     }
   }
 }
