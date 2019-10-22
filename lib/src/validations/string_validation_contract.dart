@@ -3,34 +3,34 @@ import 'package:flunt_dart/src/validators/string_validator.dart';
 
 mixin StringValidation<T> implements IContract {
   void hasLen(int length, String message) {
-    addValidator(HasExactLengthValidator(length), message);
+    withValidator(HasExactLengthValidator(length), message);
   }
 
   void hasMaxLen(int max, String message) {
-    addValidator(HasMaxLenValidator(max), message);
+    withValidator(HasMaxLenValidator(max), message);
   }
 
   void hasMinLen(int min, String message) {
-    addValidator(HasMinLenValidator(min), message);
+    withValidator(HasMinLenValidator(min), message);
   }
 
   void isWhiteSpace(String message) {
-    addValidator(SpaceValidator(), message);
+    withValidator(SpaceValidator(), message);
   }
 
   void constains(String value, String message) {
-    addValidator(ContainsValidator(value), message);
+    withValidator(ContainsValidator(value), message);
   }
 
   void isNotEmpty(String message) {
-    addValidator(NotEmptyValidator(), message);
+    withValidator(NotEmptyValidator(), message);
   }
 
   void isEmpty(String message) {
-    addValidator(EmptyValidator(), message);
+    withValidator(EmptyValidator(), message);
   }
 
   void notIsEmpty(String message) {
-    addValidator(NotEmptyValidator(), message);
+    withValidator(NotEmptyValidator(), message);
   }
 }

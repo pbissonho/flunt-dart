@@ -7,7 +7,6 @@ import 'bool_validation_contract.dart';
 import 'contracts/contract.dart';
 import 'contracts/validatable.dart';
 import 'string_validation_contract.dart';
-import 'package:meta/meta.dart';
 
 class Contract<T> extends Notifiable
     with
@@ -35,13 +34,8 @@ class Contract<T> extends Notifiable
     return this;
   }
 
-  void withValidate(IValidate<T> validator, String message) {
-    addValidator(validator, message);
-  }
-
   @override
-  @protected
-  void addValidator(IValidate validate, message) {
+  void withValidator(IValidate validate, message) {
     try {
       if (!validate.validate(property)) {
         addNotification(Notification(name, message));

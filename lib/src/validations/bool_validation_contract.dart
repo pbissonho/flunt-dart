@@ -3,10 +3,10 @@ import 'package:flunt_dart/src/validators/bool_validator.dart';
 
 mixin BoolValidation<T> implements IContract {
   void isTrue(String message) {
-    addValidator(TrueValidator(), message);
+    withValidator(TrueValidator(), message);
   }
 
   void isFalse(String message) {
-    addValidator(FalseValidator(), message);
+    withValidator(FalseValidator(), message);
   }
 }

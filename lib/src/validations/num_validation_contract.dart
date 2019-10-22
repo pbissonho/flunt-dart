@@ -4,18 +4,18 @@ import 'contracts/contract.dart';
 
 mixin NumValidation<T> implements IContract {
   void isGreaterThan(int compare, String message) {
-    addValidator(GreaterThanValidator(compare), message);
+    withValidator(GreaterThanValidator(compare), message);
   }
 
   void isLowerThan(int compare, String message) {
-    addValidator(LowerThanValidator(compare), message);
+    withValidator(LowerThanValidator(compare), message);
   }
 
   void between(num from, num to, String message) {
-    addValidator(BetweenValidator(from, to), message);
+    withValidator(BetweenValidator(from, to), message);
   }
 
   void notBetween(num from, num to, String message) {
-    addValidator(NotBetweenValidator(from, to), message);
+    withValidator(NotBetweenValidator(from, to), message);
   }
 }

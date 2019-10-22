@@ -1,9 +1,7 @@
 import 'package:flunt_dart/flunt_dart.dart';
 import 'package:flunt_dart/src/notifications/notificable.dart';
-import 'package:meta/meta.dart';
 
-abstract class IContract implements Notifiable {
+abstract class IContract<T> implements Notifiable {
   requires();
-  @protected
-  void addValidator(IValidate validate, message);
+  void withValidator(IValidate validate, message);
 }
