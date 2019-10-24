@@ -22,9 +22,9 @@ class Customer {
 
 class NameContract extends Contract<String> {
   NameContract(String value, String name) : super(value, name) {
-      ..isNotEmpty("not should be empty");
-      ..hasMaxLen(40, "should have no more than 40 chars");
-      ..hasMinLen(3, "should have at least 3 chars");
+      isNotEmpty("not should be empty");
+      hasMaxLen(40, "should have no more than 40 chars");
+      hasMinLen(3, "should have at least 3 chars");
   }
 }
 

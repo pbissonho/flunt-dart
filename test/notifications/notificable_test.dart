@@ -50,4 +50,24 @@ void main() {
     expect(notifiable.invalid, true);
     expect(notifiable.notifications.length, 3);
   });
+
+  test("forProperty", () {
+    var notifiable = Notifiable();
+    notifiable.addNotification(Notification("Name", "Message"));
+
+    var notifications = notifiable.forProperty("Name");
+
+    expect(notifications.length, 1);
+
+    dynamic error;
+
+    try {
+      notifications.add(Notification("", ""));
+    } catch (exception) {
+      error = exception;
+    }
+
+    expect(error, isA<UnsupportedError>());
+    expect(error, isNotNull);
+  });
 }

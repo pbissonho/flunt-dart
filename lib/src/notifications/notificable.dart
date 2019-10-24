@@ -1,13 +1,17 @@
 import 'package:flunt_dart/src/notifications/notification.dart';
 
 class Notifiable {
-  List<Notification> _notifications;
+  final List<Notification> _notifications;
 
-  Notifiable() {
-    _notifications = List<Notification>();
+  Notifiable() : _notifications = List<Notification>();
+
+  List<Notification> forProperty(String property) {
+    var listWhere =
+        notifications.where((noti) => noti.property == property).toList();
+    return List.unmodifiable(listWhere);
   }
 
-  List<Notification> get notifications => _notifications;
+  List<Notification> get notifications => List.unmodifiable(_notifications);
 
   void addNotification(Notification notification) {
     _notifications.add(notification);
