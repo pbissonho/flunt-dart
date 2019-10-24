@@ -14,7 +14,8 @@ class MatchsValidator implements IValidate<String> {
 
 class EmailValidator implements IValidate<String> {
   EmailValidator();
-  final String pattern = r"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
+  static const String pattern =
+      r"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
   @override
   bool validate(String value) {
     return MatchsValidator(pattern).validate(value);
@@ -22,7 +23,7 @@ class EmailValidator implements IValidate<String> {
 }
 
 class UrlValidator implements IValidate<String> {
-  final String pattern =
+  static const String pattern =
       r"^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$";
 
   UrlValidator();
@@ -34,7 +35,7 @@ class UrlValidator implements IValidate<String> {
 }
 
 class DigitValidator implements IValidate<String> {
-  final String pattern = r"^\d+$";
+  static const String pattern = r"^\d+$";
 
   DigitValidator();
 
