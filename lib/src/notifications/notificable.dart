@@ -22,12 +22,12 @@ class Notifiable {
   }
 
   void addNotifiable(Notifiable notifiable) {
-    notifications.addAll(notifiable.notifications);
+    _notifications.addAll(notifiable.notifications);
   }
 
   void addNotifiables(List<Notifiable> notifiables) {
     notifiables.forEach((item) {
-      notifications.addAll(item.notifications);
+      _notifications.addAll(item.notifications);
     });
   }
 
