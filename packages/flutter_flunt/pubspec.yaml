@@ -1,8 +1,8 @@
 name: flutter_flunt
-description: A new Flutter package project.
+description: Library that provides widgets to make it easier to use Flunt-dart in the flutter.
 version: 0.0.1
-author:
-homepage:
+author: Pedro Bissonho
+homepage: https://github.com/PedroBissonho/flunt-dart/tree/master/packages/flutter_flunt
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
