@@ -2,11 +2,64 @@ import 'package:flunt_dart/flunt_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+enum ErrorFormatType { onlyPropertyName, onlyMessage, both }
+
+class Formatter {
+  final ErrorFormatType errorFormatType;
+  final Contract contract;
+  final String Function(String propery, String message) formater;
+
+  Formatter(
+      {this.errorFormatType = ErrorFormatType.both,
+      this.contract,
+      this.formater});
+  _formatByTpe(ErrorFormatType type, String name, String message) {
+    switch (type) {
+      case ErrorFormatType.onlyPropertyName:
+        return "$name";
+      case ErrorFormatType.onlyMessage:
+        return "$message";
+      case ErrorFormatType.both:
+        return "$name $message";
+    }
+    return "$name $message";
+  }
+
+  String formattedMessage() {
+    if (contract.invalid) {
+      var propery = contract.notifications.first.property;
+      var message = contract.notifications.first.message;
+      if (formater == null) {
+        return _formatByTpe(errorFormatType, propery, message);
+      } else {
+        return formater(propery, message);
+      }
+    }
+    return null;
+  }
+}
+
 class FluntTextFormField extends TextFormField {
+  final ErrorFormatType errorFormatType;
+
+  static String _formatByTpe(
+      ErrorFormatType type, String name, String message) {
+    switch (type) {
+      case ErrorFormatType.onlyPropertyName:
+        return "$name";
+      case ErrorFormatType.onlyMessage:
+        return "$message";
+      case ErrorFormatType.both:
+        return "$name $message";
+    }
+    return "$name $message";
+  }
+
   FluntTextFormField({
     Key key,
-    final Contract Function(String value) contract,
-    String Function(String propery, String message) format,
+    this.errorFormatType = ErrorFormatType.both,
+    @required Contract Function(String value) contract,
+    String Function(String propery, String message) errorFormat,
     int quant,
     TextEditingController controller,
     String initialValue,
@@ -45,20 +98,16 @@ class FluntTextFormField extends TextFormField {
     EdgeInsets scrollPadding = const EdgeInsets.all(20.0),
     bool enableInteractiveSelection = true,
     InputCounterWidgetBuilder buildCounter,
-  }) : super(
+  })  : assert(contract != null),
+        super(
             key: key,
             validator: (value) {
-              var contractT = contract(value);
-              if (contractT.invalid) {
-                var propery = contractT.notifications.first.property;
-                var message = contractT.notifications.first.message;
-                if (format == null) {
-                  return "$propery $message";
-                } else {
-                  return format(propery, message);
-                }
-              }
-              return null;
+              var formatter = Formatter(
+                  contract: contract(value),
+                  errorFormatType: errorFormatType,
+                  formater: errorFormat);
+
+              return formatter.formattedMessage();
             },
             controller: controller,
             initialValue: initialValue,
