@@ -87,20 +87,16 @@ void isWhiteSpace(String message);
 void constains(String value, String message);
 void isNotEmpty(String message); 
 void isEmpty(String message);
-void notIsEmpty(String message);
  ``` 
-
 #### Object
 
 ``` dart
 void isNull(String message)
 void isNotNull(String message)
 void equasA(Object compare, String message); 
- ``` 
-
+```
 
 #### Pattern
-
 ``` dart
 void matchs(String pattern, String message);
 void isUrl(String message);
@@ -115,12 +111,6 @@ void isTrue(String message);
 void isFalse(String message); 
 ``` 
 
-#### Bool
-
-``` dart
-void isTrue(String message);
-void isFalse(String message); 
-``` 
 
 ## Credits
 

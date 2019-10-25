@@ -29,8 +29,4 @@ mixin StringValidation<T> implements IContract {
   void isEmpty(String message) {
     withValidator(EmptyValidator(), message);
   }
-
-  void notIsEmpty(String message) {
-    withValidator(NotEmptyValidator(), message);
-  }
 }
