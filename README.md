@@ -52,6 +52,6 @@ class CustomerContract extends Contract<Customer> {
 
 This library uses concepts and implementations from the following repositories.
 
-- [Flunt](https://github.com/andrebaltieri/flunt) by [Andre Baltieri] (https://github.com/andrebaltieri)
+- [Flunt](https://github.com/andrebaltieri/flunt) by [Andre Baltieri](https://github.com/andrebaltieri)
 
-- [Flunt.Br](https://github.com/andrebaltieri/flunt) by [Alan Lira] (https://github.com/lira92)
+- [Flunt.Br](https://github.com/andrebaltieri/flunt) by [Alan Lira](https://github.com/lira92)
