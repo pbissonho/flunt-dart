@@ -3,7 +3,8 @@
 [![Build Status](https://travis-ci.org/PedroBissonho/flunt-dart.svg?branch=master)](https://travis-ci.org/PedroBissonho/flunt-dart)
 [![codecov](https://codecov.io/gh/PedroBissonho/flunt-dart/branch/master/graph/badge.svg)](https://codecov.io/gh/PedroBissonho/flunt-dart)
 
-Library that provides widgets to make it easier to use Flunt-dart in the flutter.
+Library that provides widgets to make it easier to use FluntDart in the flutter.
+See [FluntDart](https://github.com/PedroBissonho/flunt-dart) to use this package.
 
 ## Usage
 
