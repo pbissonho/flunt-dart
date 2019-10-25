@@ -52,15 +52,14 @@ class CustomerContract extends Contract<Customer> {
 
 ### BrContract
 
-O BrContract prove validações especificas para o Brasil.
-The BrContract provides specific validations for brazil.
-
+##### O BrContract prove validações especificas para o Brasil.
 ``` dart
 // Métodos atualmente disponíveis.
-isCep("O CEP não é valido.")
-isCnpj("O CPNJ não é valido")
-isCpf("O CPF não é valido");
+isCep("O CEP não é válido.")
+isCnpj("O CPNJ não é válido")
+isCpf("O CPF não é válido");
 ```
+##### The BrContract provides specific validations for brazil.
 ``` dart
 // Methods currently available.
 isCep("O CEP not is valid.")
