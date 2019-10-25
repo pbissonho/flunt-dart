@@ -48,9 +48,29 @@ class CustomerContract extends Contract<Customer> {
     // The customer is valid and can be used.
   }
 ```
+
+
+### BrContract
+
+O BrContract prove validações especificas para o Brasil.
+The BrContract provides specific validations for brazil.
+
+``` dart
+// Métodos atualmente disponíveis.
+isCep("O CEP não é valido.")
+isCnpj("O CPNJ não é valido")
+isCpf("O CPF não é valido");
+```
+``` dart
+// Methods currently available.
+isCep("O CEP not is valid.")
+isCnpj("O CPNJ not is valid")
+isCpf("O CPF not is valid");
+```
+
 ## Credits
 
-This library uses concepts and implementations from the following repositories.
+This library uses concepts and implementations based from the following repositories.
 
 - [Flunt](https://github.com/andrebaltieri/flunt) by [Andre Baltieri](https://github.com/andrebaltieri)
 
