@@ -85,13 +85,13 @@ void main() {
   });
 
   test("notIsEmpty", () {
-    var wrong = Contract("", "Value")..notIsEmpty("String is empty");
+    var wrong = Contract("", "Value")..isNotEmpty("String is empty");
     expect(false, wrong.valid);
     expect(true, wrong.invalid);
     expect(1, wrong.notifications.length);
 
     var right = Contract("Right String", "Value")
-      ..notIsEmpty("String is empty");
+      ..isNotEmpty("String is empty");
     expect(true, right.valid);
     expect(false, right.invalid);
     expect(0, right.notifications.length);
