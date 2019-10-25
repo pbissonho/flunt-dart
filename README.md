@@ -1,5 +1,5 @@
 
-# FluntDart
+# Flunt-dart
 
 [![Build Status](https://travis-ci.org/PedroBissonho/flunt-dart.svg?branch=master)](https://travis-ci.org/PedroBissonho/flunt-dart)
 [![codecov](https://codecov.io/gh/PedroBissonho/flunt-dart/branch/master/graph/badge.svg)](https://codecov.io/gh/PedroBissonho/flunt-dart)
@@ -48,3 +48,10 @@ class CustomerContract extends Contract<Customer> {
     // The customer is valid and can be used.
   }
 ```
+## Credits
+
+This library uses concepts and implementations from the following repositories.
+
+- [Flunt](https://github.com/andrebaltieri/flunt) by [Andre Baltieri] (https://github.com/andrebaltieri)
+
+- [Flunt.Br](https://github.com/andrebaltieri/flunt) by [Alan Lira] (https://github.com/lira92)

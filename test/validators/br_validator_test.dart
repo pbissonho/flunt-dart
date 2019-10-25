@@ -1,4 +1,4 @@
-import 'package:flunt_dart/src/validators/br_validator.dart';
+import 'package:flunt_dart/src/brasil_extension/br_validator.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -24,6 +24,15 @@ void main() {
     expect(false, validator.validate("2083515"));
   });
 
+  test("CpnjValidator", () {
+    CnpjValidator validator = CnpjValidator();
+
+    expect(true, validator.validate("13.347.016/0001-17"));
+    expect(true, validator.validate("97928570000188"));
+    expect(false, validator.validate("9792857000018"));
+    expect(false, validator.validate("979285700001888"));
+    expect(false, validator.validate("979fds28570gf0001888"));
+  });
   /*
   test("BrPhoneValidator", () {
     BrPhoneValidator validator = BrPhoneValidator();
@@ -36,12 +45,6 @@ void main() {
     expect(false, validator.validate("(22)9992245899555"));
     expect(false, validator.validate("(22)9992"));
     expect(false, validator.validate("2299922458"));
-  });
-
-  test("CpnjValidator", () {
-    CpnjValidator validator = CpnjValidator();
-
-    expect(true, validator.validate("20835-150"));
   });
   */
 }

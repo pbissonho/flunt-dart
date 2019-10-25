@@ -10,6 +10,7 @@ import 'validations/object_validation_contract_test.dart' as validations_object_
 import 'validations/pattern_validation_contract_test.dart' as validations_pattern_validation_contract_test;
 import 'validations/string_validation_contract_test.dart' as validations_string_validation_contract_test;
 import 'validators/bool_validator_test.dart' as validators_bool_validator_test;
+import 'validators/br_validator_test.dart' as validators_br_validator_test;
 import 'validators/num_validator_test.dart' as validators_num_validator_test;
 import 'validators/object_validator_test.dart' as validators_object_validator_test;
 import 'validators/pattern_validator_test.dart' as validators_pattern_validator_test;
@@ -24,6 +25,7 @@ void main() {
   validators_bool_validator_test.main();
   validators_num_validator_test.main();
   validators_string_validator_test.main();
+  validators_br_validator_test.main();
   validators_pattern_validator_test.main();
   validators_object_validator_test.main();
   contract_test.main();
