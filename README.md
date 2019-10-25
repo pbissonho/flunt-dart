@@ -49,7 +49,6 @@ class CustomerContract extends Contract<Customer> {
   }
 ```
 
-
 ### BrContract
 
 ##### O BrContract prove validações especificas para o Brasil.
@@ -66,6 +65,62 @@ isCep("O CEP not is valid.")
 isCnpj("O CPNJ not is valid")
 isCpf("O CPF not is valid");
 ```
+
+
+## Validations
+  
+#### Num
+
+``` dart
+void isGreaterThan(int compare, String message);
+void isLowerThan(int compare, String message);
+void between(num from, num to, String message);
+void notBetween(num from, num to, String message);
+ ```  
+#### String
+
+``` dart
+void hasLen(int length, String message);
+void hasMaxLen(int max, String message);
+void hasMinLen(int min, String message);
+void isWhiteSpace(String message); 
+void constains(String value, String message);
+void isNotEmpty(String message); 
+void isEmpty(String message);
+void notIsEmpty(String message);
+ ``` 
+
+#### Object
+
+``` dart
+void isNull(String message)
+void isNotNull(String message)
+void equasA(Object compare, String message); 
+ ``` 
+
+
+#### Pattern
+
+``` dart
+void matchs(String pattern, String message);
+void isUrl(String message);
+void isEmail(String message);
+void isDigit(String message);
+``` 
+
+#### Bool
+
+``` dart
+void isTrue(String message);
+void isFalse(String message); 
+``` 
+
+#### Bool
+
+``` dart
+void isTrue(String message);
+void isFalse(String message); 
+``` 
 
 ## Credits
 
