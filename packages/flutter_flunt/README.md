@@ -1,10 +1,10 @@
 # FlutterFlunt
 
-[![Build Status](https://travis-ci.org/PedroBissonho/flunt-dart.svg?branch=master)](https://travis-ci.org/PedroBissonho/flunt-dart)
-[![codecov](https://codecov.io/gh/PedroBissonho/flunt-dart/branch/master/graph/badge.svg)](https://codecov.io/gh/PedroBissonho/flunt-dart)
+[![Build Status](https://travis-ci.org/pbissonho/flunt-dart.svg?branch=master)](https://travis-ci.org/pbissonho/flunt-dart)
+[![codecov](https://codecov.io/gh/pbissonho/flunt-dart/branch/master/graph/badge.svg)](https://codecov.io/gh/pbissonho/flunt-dart)
 
 Library that provides widgets to make it easier to use FluntDart in the flutter.
-See [FluntDart](https://github.com/PedroBissonho/flunt-dart) to use this package.
+See [Flunt-dart](https://github.com/PedroBissonho/flunt-dart) to use this package.
 
 ## Usage
 
@@ -30,8 +30,7 @@ FluntTextFormField extends TextFormField and provides a simple way to use contra
     contract: (value) => StringContract(value, "Name"),
     decoration: InputDecoration(
     prefixIcon: Icon(Icons.account_circle),
-    ),
-),
+    )
 )
 ```
 

@@ -1,8 +1,8 @@
 
 # Flunt-dart
 
-[![Build Status](https://travis-ci.org/PedroBissonho/flunt-dart.svg?branch=master)](https://travis-ci.org/PedroBissonho/flunt-dart)
-[![codecov](https://codecov.io/gh/PedroBissonho/flunt-dart/branch/master/graph/badge.svg)](https://codecov.io/gh/PedroBissonho/flunt-dart)
+[![Build Status](https://travis-ci.org/pbissonho/flunt-dart.svg?branch=master)](https://travis-ci.org/pbissonho/flunt-dart)
+[![codecov](https://codecov.io/gh/pbissonho/flunt-dart/branch/master/graph/badge.svg)](https://codecov.io/gh/pbissonho/flunt-dart)
 
 Library that provides a fluent way to use Notification Pattern. It is based on [Flunt](https://github.com/andrebaltieri/flunt).
 
