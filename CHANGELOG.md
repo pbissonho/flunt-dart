@@ -1,3 +1,8 @@
+## 0.4.0
+
+- Added BrContract.
+- Breaking Change: The contract no longer has the notIsEmpty method. Use the isNotEmpty method.
+
 ## 0.2.0
 
 - Notifiable return a immutable list.
