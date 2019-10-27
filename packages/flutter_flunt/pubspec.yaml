@@ -1,6 +1,6 @@
 name: flutter_flunt
 description: Library that provides widgets to make it easier to use Flunt-dart in the flutter.
-version: 0.0.1
+version: 0.0.1+1
 author: Pedro Bissonho <pedro.bissonho@gmail.com>
 homepage: https://github.com/PedroBissonho/flunt-dart/tree/master/packages/flutter_flunt
 
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flunt_dart: ^0.2.0
+  flunt_dart: ^0.4.0
 
 dev_dependencies:
   flutter_test:
